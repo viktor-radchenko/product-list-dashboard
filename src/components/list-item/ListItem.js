@@ -1,18 +1,33 @@
+import './ListItem.scss';
+
 export const ListItem = ({ item, handleItemButton, deleted }) => {
   const button = deleted ? (
-    <div className="dashboard__item-actions">
-      <button onClick={() => handleItemButton(item)}>Restore</button>
-    </div>
+      <button 
+        className='btn btn--action btn--action-restore' 
+        type="button" 
+        onClick={() => handleItemButton(item)}>
+        Restore
+      </button>
   ) : (
-    <div className="dashboard__item-actions">
-      <button onClick={() => handleItemButton(item)}>Delete</button>
-    </div>
+      <button
+        className='btn btn--action btn--action-delete'
+        type="button" 
+        onClick={() => handleItemButton(item)}>
+        Delete
+      </button>
   );
 
   return (
-    <li className="dashboard__item">
-      <div className="dashboard__item-name">{item}</div>
-      {button}
+    <li className="product-list__item">
+      <div className="product-item">
+        <div className='product-item__name'>
+          {item}
+        </div>
+        <div className="product-item__button">
+          {button}
+        </div>
+      </div>
+     
     </li>
   );
 };

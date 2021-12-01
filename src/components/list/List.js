@@ -1,9 +1,11 @@
+import "./List.scss";
+
 import ListItem from "../list-item";
 
 export const List = ({ filteredList, handleItemButton, deleted = false }) => {
   if (filteredList.length === 0) {
     return (
-      <div className="dasboard__error">
+      <div className="error">
         We could not find any items. Check your filter input or try again
         later...
       </div>
@@ -11,7 +13,7 @@ export const List = ({ filteredList, handleItemButton, deleted = false }) => {
   }
 
   return (
-    <ul className="dashboard__list">
+    <ul className="product-list">
       {filteredList.map((item) => (
         <ListItem
           key={item}

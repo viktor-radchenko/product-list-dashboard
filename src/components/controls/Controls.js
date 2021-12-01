@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import NewItemForm from "../new-item-form";
+
+import NewItemForm from '../new-item-form';
+import './Controls.scss';
 
 export const Controls = ({ handleFilterKey, handleItemAdd }) => {
   const [newItemFormVisible, setNewItemFormVisible] = useState(false);
@@ -10,21 +12,24 @@ export const Controls = ({ handleFilterKey, handleItemAdd }) => {
   };
 
   return (
-    <div className="dasboard__controls">
-      <form>
-        <label className="dashboard__label" htmlFor="productFilter">
-          Filter items by name
-          <input
-            className="dashboard__input"
-            id="productFilter"
-            onChange={handleFilterKey}
-          />
+    <div className='controls'>
+      <form class='form controls__form'>
+        <label className='form__label' htmlFor='productFilter'>
+          <span className="sr-only">Filter items by name</span>
         </label>
+        <input
+          className='form__input'
+          placeholder='Filter items by name'
+          id='productFilter'
+          onChange={handleFilterKey}
+        />
       </form>
-      {newItemFormVisible && <NewItemForm handleItemAdd={handleItemAdd} />}
-      <button onClick={toggleNewItemForm}>
-        {newItemFormVisible ? "Cancel" : "Add new item"}
-      </button>
+      <div className='controls__box'>
+        {newItemFormVisible && <NewItemForm handleItemAdd={handleItemAdd} />}
+        <button class='btn controls__btn' onClick={toggleNewItemForm}>
+            {newItemFormVisible ? 'Cancel' : 'Add new item'}
+        </button>
+      </div>
     </div>
   );
 };

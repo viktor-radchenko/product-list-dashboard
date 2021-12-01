@@ -1,0 +1,33 @@
+.product-item {
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  background-color: #fff;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease-in-out;
+  color: #5e5e5e;
+
+  &:hover {
+    border-color: rgba(#000, 0.2);
+  }
+
+  &__name {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  &__button {
+    .btn {
+      padding: 12px 24px;
+      color: #fff;
+      font-weight: 500;
+   
+
+    
+
+    }
+  }
+}

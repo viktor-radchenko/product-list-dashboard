@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 
+import './App.scss';
+import './Dashboard.scss';
 import Header from './components/header';
 import Stats from './components/stats';
 import Controls from './components/controls';
 import List from './components/list';
+import Footer from './components/footer';
 
-import './App.css';
+
 
 const App = () => {
   const [productList, setProductList] = useState(() => [
@@ -56,11 +59,27 @@ const App = () => {
   );
 
   return (
-    <div className='dashboard'>
+    <div className='wrapper'>
       <Header deleted={deletedTab}/>
-      <Stats total={productList.length} deleted={deletedProducts.length} toggleTabs={toggleTabs} />
-      <Controls handleFilterKey={handleFilterKey} handleItemAdd={handleItemAdd} />
-      {list}
+      <main className='main dashboard'>
+        <div className="container">
+          <div className="dashboard__inner">
+            <div className="dashboard__content">
+              <div className="dashboard__top">
+                <Stats total={productList.length} deleted={deletedProducts.length} toggleTabs={toggleTabs} />
+                
+              </div>
+              {list}
+            </div>
+            <div className="dashboard__actions">
+              <Controls handleFilterKey={handleFilterKey} handleItemAdd={handleItemAdd} />
+            </div>
+          </div>
+          
+          
+        </div>
+      </main>
+      <Footer/>
     </div>
   );
 };

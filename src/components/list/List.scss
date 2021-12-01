@@ -1,0 +1,10 @@
+.product-list {
+  max-width: 600px;
+  
+  &__item {
+    
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+}

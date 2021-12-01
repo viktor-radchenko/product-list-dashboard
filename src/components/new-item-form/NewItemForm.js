@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 export const NewItemForm = ({ handleItemAdd }) => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
 
   const handleChange = (e) => {
     setName(e.target.value);
@@ -10,24 +10,29 @@ export const NewItemForm = ({ handleItemAdd }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const itemName = e.target.itemName.value;
-    if (itemName === "") return;
+    if (itemName === '') return;
     handleItemAdd(e.target.itemName.value);
-    setName("");
+    setName('');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="itemName">
-        Type item name
+    <form className='form controls__new-item' onSubmit={handleSubmit}>
+      <div className='form__inner'>
+        <label className='form__label' htmlFor='itemName'>
+          <span className='sr-only'>Type item name</span>
+        </label>
         <input
-          type="text"
-          id="itemName"
-          name="itemName"
+          className='form__input'
+          placeholder='Type item name'
+          type='text'
+          id='itemName'
+          name='itemName'
           onChange={handleChange}
           value={name}
         />
-      </label>
-      <button type="submit">Add item</button>
+      </div>
+      
+      <button className='btn form__btn ' type='submit'>+</button>
     </form>
   );
 };
