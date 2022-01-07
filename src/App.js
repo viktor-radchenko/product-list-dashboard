@@ -8,20 +8,14 @@ import Controls from './components/controls';
 import List from './components/list';
 import Footer from './components/footer';
 
-
+import { productList as prodList } from './productList';
 
 const App = () => {
-  const [productList, setProductList] = useState(() => [
-    'MacBook Pro 14',
-    'MacBook Pro 16',
-    'Lenovo IdeaPad',
-    'Huawei MateBook',
-    'Microsoft Surface Book',
-  ]);
+  const [productList, setProductList] = useState(prodList);
   const [deletedProducts, setDeletedProducts] = useState([]);
   const [filterKey, setFilterKey] = useState('');
   const [filteredList, setFilteredList] = useState([]);
-  const [deletedTab, setDeletedTab] = useState(false);
+  const [currentTab, setCurrentTab] = useState('all');
 
   const handleFilterKey = (e) => {
     setFilterKey(e.target.value.toLowerCase());
@@ -43,43 +37,41 @@ const App = () => {
     setProductList((prev) => [...prev, itemToRestore]);
   };
 
-  const toggleTabs = (tab) => {
-    setDeletedTab(tab);
+  const toggleTabs = (e) => {
+    setCurrentTab(e.target.value);
   };
 
   useEffect(() => {
-    const filtered = productList.filter((item) => item.toLowerCase().includes(filterKey));
+    const filtered = productList.filter((item) => item.name.toLowerCase().includes(filterKey));
     setFilteredList(filtered);
   }, [productList, filterKey]);
 
-  const list = deletedTab ? (
-    <List filteredList={deletedProducts} handleItemButton={handleItemRestore} deleted />
-  ) : (
-    <List filteredList={filteredList} handleItemButton={handleItemDelete} />
-  );
+  const list =
+    currentTab === 'all' ? (
+      <List filteredList={filteredList} handleItemButton={handleItemDelete} />
+    ) : (
+      <List filteredList={deletedProducts} handleItemButton={handleItemRestore} deleted />
+    );
 
   return (
     <div className='wrapper'>
-      <Header deleted={deletedTab}/>
+      <Header currentTab={currentTab} />
       <main className='main dashboard'>
-        <div className="container">
-          <div className="dashboard__inner">
-            <div className="dashboard__content">
-              <div className="dashboard__top">
+        <div className='container'>
+          <div className='dashboard__inner'>
+            <div className='dashboard__content'>
+              <div className='dashboard__top'>
                 <Stats total={productList.length} deleted={deletedProducts.length} toggleTabs={toggleTabs} />
-                
               </div>
               {list}
             </div>
-            <div className="dashboard__actions">
+            <div className='dashboard__actions'>
               <Controls handleFilterKey={handleFilterKey} handleItemAdd={handleItemAdd} />
             </div>
           </div>
-          
-          
         </div>
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

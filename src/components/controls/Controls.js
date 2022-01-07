@@ -13,7 +13,7 @@ export const Controls = ({ handleFilterKey, handleItemAdd }) => {
 
   return (
     <div className='controls'>
-      <form class='form controls__form'>
+      <form className='form controls__form'>
         <label className='form__label' htmlFor='productFilter'>
           <span className="sr-only">Filter items by name</span>
         </label>
@@ -26,7 +26,7 @@ export const Controls = ({ handleFilterKey, handleItemAdd }) => {
       </form>
       <div className='controls__box'>
         {newItemFormVisible && <NewItemForm handleItemAdd={handleItemAdd} />}
-        <button class='btn controls__btn' onClick={toggleNewItemForm}>
+        <button className='btn controls__btn' onClick={toggleNewItemForm}>
             {newItemFormVisible ? 'Cancel' : 'Add new item'}
         </button>
       </div>

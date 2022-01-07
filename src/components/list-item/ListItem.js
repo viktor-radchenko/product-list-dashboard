@@ -21,7 +21,7 @@ export const ListItem = ({ item, handleItemButton, deleted }) => {
     <li className="product-list__item">
       <div className="product-item">
         <div className='product-item__name'>
-          {item}
+          {item.name}
         </div>
         <div className="product-item__button">
           {button}

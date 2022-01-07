@@ -9,9 +9,9 @@ export const NewItemForm = ({ handleItemAdd }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const itemName = e.target.itemName.value;
-    if (itemName === '') return;
-    handleItemAdd(e.target.itemName.value);
+    const name = e.target.itemName.value;
+    if (name === '') return;
+    handleItemAdd({name});
     setName('');
   };
 
